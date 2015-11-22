@@ -250,7 +250,7 @@ module Spark
 
       # Limits the result count to the number specified.
       def limit(num)
-        new_jdf = jdf.limit(mum)
+        new_jdf = jdf.limit(num)
         DataFrame.new(new_jdf, sql_context)
       end
 
