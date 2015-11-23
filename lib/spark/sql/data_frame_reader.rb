@@ -93,6 +93,18 @@ module Spark
         load(path, 'org.apache.spark.sql.execution.datasources.json', new_schema)
       end
 
+      def parquet(path, new_schema=nil)
+        load(path, 'org.apache.spark.sql.execution.datasources.parquet', new_schema)
+      end
+
+      def orc(path, new_schema=nil)
+        load(path, 'org.apache.spark.sql.execution.datasources.orc', new_schema)
+      end
+
+      def table name
+        df(jreader.table(name))
+      end
+
     end
   end
 end

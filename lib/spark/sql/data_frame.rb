@@ -254,6 +254,13 @@ module Spark
         DataFrame.new(new_jdf, sql_context)
       end
 
+      def register_temp_table name
+        jdf.registerTempTable(name)
+      end
+
+      def write
+        DataFrameWriter.new(self)
+      end
 
       alias_method :where, :filter
 
