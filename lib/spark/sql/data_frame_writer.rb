@@ -79,16 +79,21 @@ module Spark
         save(path, 'org.apache.spark.sql.execution.datasources.orc')
       end
 
-      def insert_into
+      def insert_into table_name
+        jwriter.insertInto(table_name)
       end
 
-      def save_as_table
+      def save_as_table name
+        jwriter.saveAsTable(name)
       end
 
-      def partition_by
+      def partition_by columns
+        jwriter.partitionBy(columns)
       end
 
-      def mode
+      def mode name
+        jwriter.mode(name)
+        self
       end
 
     end
