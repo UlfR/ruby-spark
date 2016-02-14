@@ -6,6 +6,7 @@ module Spark
     autoload_without_import :DataType,        'spark/sql/data_type'
     autoload_without_import :DataFrame,       'spark/sql/data_frame'
     autoload_without_import :DataFrameReader, 'spark/sql/data_frame_reader'
+    autoload_without_import :DataFrameWriter, 'spark/sql/data_frame_writer'
 
     autoload :Row,    'spark/sql/row'
     autoload :Column, 'spark/sql/column'

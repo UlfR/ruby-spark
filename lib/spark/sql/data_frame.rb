@@ -250,10 +250,17 @@ module Spark
 
       # Limits the result count to the number specified.
       def limit(num)
-        new_jdf = jdf.limit(mum)
+        new_jdf = jdf.limit(num)
         DataFrame.new(new_jdf, sql_context)
       end
 
+      def register_temp_table name
+        jdf.registerTempTable(name)
+      end
+
+      def write
+        DataFrameWriter.new(self)
+      end
 
       alias_method :where, :filter
 

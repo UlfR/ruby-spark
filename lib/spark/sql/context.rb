@@ -13,6 +13,10 @@ module Spark
         DataFrameReader.new(self)
       end
 
+      def sql query
+        DataFrame.new(jsql_context.sql(query).toDF, self)
+      end
+
     end
   end
 end
