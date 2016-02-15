@@ -122,6 +122,8 @@ module Spark
       #   algorithm should validate data before training.
       #   (default: true)
       #
+      # :param convergenceTol:    A condition which decides iteration termination.
+      #    (default: 0.001)
       def self.train(rdd, options={})
         super
 
@@ -133,7 +135,8 @@ module Spark
                                            options[:initial_weights],
                                            options[:reg_type],
                                            options[:intercept],
-                                           options[:validate])
+                                           options[:validate],
+                                           options[:convergence_tol] || 0.001)
 
         SVMModel.new(weights, intercept)
       end

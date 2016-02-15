@@ -106,7 +106,8 @@ module Spark
                                            options[:mini_batch_fraction].to_f,
                                            options[:initial_weights],
                                            options[:intercept],
-                                           options[:validate])
+                                           options[:validate],
+                                           options[:convergence_tol] || 0.001)
 
         LassoModel.new(weights, intercept)
       end

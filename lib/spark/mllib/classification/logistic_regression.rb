@@ -142,6 +142,8 @@ module Spark
       #   algorithm should validate data before training.
       #   (default: true)
       #
+      # :param convergenceTol:    A condition which decides iteration termination.
+      #    (default: 0.001)
       def self.train(rdd, options={})
         super
 
@@ -153,7 +155,8 @@ module Spark
                                            options[:reg_param].to_f,
                                            options[:reg_type],
                                            options[:intercept],
-                                           options[:validate])
+                                           options[:validate],
+                                           options[:convergence_tol] || 0.001)
 
         LogisticRegressionModel.new(weights, intercept)
       end

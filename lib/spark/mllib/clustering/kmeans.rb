@@ -110,11 +110,17 @@ module Spark
       # epsilon::
       #   The distance threshold within which we've consider centers to have converged.
       #
+      # initialModel:
+      #    Initial cluster centers can be provided as a KMeansModel object
+      # rather than using the random or k-means|| initializationModel.
+      #    (default: nil)
       def self.train(rdd, k, max_iterations: 100, runs: 1, initialization_mode: 'k-means||', seed: nil,
-                             initialization_steps: 5, epsilon: 0.0001)
+                             initialization_steps: 5, epsilon: 0.0001, initial_model: [])
+
         # Call returns KMeansModel
         Spark.jb.call(RubyMLLibAPI.new, 'trainKMeansModel', rdd,
-                      k, max_iterations, runs, initialization_mode, Spark.jb.to_long(seed), initialization_steps, epsilon)
+                      k, max_iterations, runs, initialization_mode,
+                      Spark.jb.to_long(seed), initialization_steps, epsilon, initial_model)
       end
 
     end

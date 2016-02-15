@@ -122,7 +122,8 @@ module Spark
                                            options[:reg_param].to_f,
                                            options[:reg_type],
                                            options[:intercept],
-                                           options[:validate])
+                                           options[:validate],
+                                           options[:convergence_tol] || 0.001)
 
         LinearRegressionModel.new(weights, intercept)
       end
