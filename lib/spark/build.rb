@@ -1,10 +1,10 @@
 module Spark
   module Build
 
-    DEFAULT_SCALA_VERSION  = '2.10.4'
-    DEFAULT_CORE_VERSION   = '2.10'
-    DEFAULT_SPARK_VERSION  = '1.6.0'
-    DEFAULT_HADOOP_VERSION = '1.0.4'
+    DEFAULT_SCALA_VERSION      = '2.10.4'
+    DEFAULT_SPARK_CORE_VERSION = '2.10'
+    DEFAULT_SPARK_VERSION      = '1.6.0'
+    DEFAULT_HADOOP_VERSION     = '2.7.1'
 
     SBT       = 'sbt/sbt'
     SBT_DEPS  = 'assemblyPackageDependency'
@@ -13,7 +13,7 @@ module Spark
 
     def self.build(options={})
       scala_version      = options[:scala_version]      || DEFAULT_SCALA_VERSION
-      spark_core_version = options[:spark_core_version] || DEFAULT_CORE_VERSION
+      spark_core_version = options[:spark_core_version] || DEFAULT_SPARK_CORE_VERSION
       spark_version      = options[:spark_version]      || DEFAULT_SPARK_VERSION
       hadoop_version     = options[:hadoop_version]     || DEFAULT_HADOOP_VERSION
       target             = options[:target]             || Spark.target_dir
